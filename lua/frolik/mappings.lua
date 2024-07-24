@@ -7,3 +7,7 @@ vim.keymap.set('n', '-', '<cmd>Oil<cr>', { desc = 'Open Oil.nvim' })
 
 vim.keymap.set('n', '<bs>', '<cmd>bprev<cr>', { desc = 'Previous buffer' })
 vim.keymap.set('n', '<tab>', '<cmd>bnext<cr>', { desc = 'Next buffer' })
+vim.keymap.set('n', '<leader>bw', '<cmd>bdelete<cr>', { desc = 'Close buffer' })
+
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll half page down' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll half page up' })

@@ -8,6 +8,14 @@ if not vim.uv.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+vim.keymap.set('n', '<leader>pc', '<cmd>Lazy clean<cr>', { desc = 'Clean' })
+vim.keymap.set('n', '<leader>pd', '<cmd>Lazy debug<cr>', { desc = 'Debug' })
+vim.keymap.set('n', '<leader>pi', '<cmd>Lazy install<cr>', { desc = 'Install' })
+vim.keymap.set('n', '<leader>pl', '<cmd>Lazy log<cr>', { desc = 'Log' })
+vim.keymap.set('n', '<leader>pp', '<cmd>Lazy profile<cr>', { desc = 'Profile' })
+vim.keymap.set('n', '<leader>ps', '<cmd>Lazy sync<cr>', { desc = 'Sync' })
+vim.keymap.set('n', '<leader>pu', '<cmd>Lazy update<cr>', { desc = 'Update' })
+
 require('lazy').setup({
     require 'frolik.plugins.colorscheme',
 
@@ -22,7 +30,7 @@ require('lazy').setup({
     require 'frolik.plugins.format',
 
     require 'frolik.plugins.trouble',
-    require 'frolik.plugins.gitsigns',
+    require 'frolik.plugins.git',
 
     require 'frolik.plugins.lualine',
     require 'frolik.plugins.toggleterm',

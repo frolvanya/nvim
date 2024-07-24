@@ -3,66 +3,24 @@ local icons = require 'frolik.icons'
 return {
     {
         'lukas-reineke/indent-blankline.nvim',
-        main = 'ibl',
+        commit = '9637670',
         opts = {
-            enabled = true,
-            debounce = 200,
-            viewport_buffer = {
-                min = 30,
-                max = 500,
+            buftype_exclude = { 'terminal', 'nofile' },
+            filetype_exclude = {
+                'help',
+                'startify',
+                'dashboard',
+                'lazy',
+                'neogitstatus',
+                'Trouble',
+                'text',
             },
-            indent = {
-                char = '▏',
-                tab_char = nil,
-                highlight = 'IblIndent',
-                smart_indent_cap = true,
-                priority = 1,
-            },
-            whitespace = {
-                highlight = 'IblWhitespace',
-                remove_blankline_trail = true,
-            },
-            exclude = {
-                buftypes = { 'terminal', 'nofile', 'quickfix', 'prompt' },
-                filetypes = {
-                    'NvimTree',
-                    'Trouble',
-                    'dashboard',
-                    'help',
-                    'lazy',
-                    'neogitstatus',
-                    'startify',
-                    'text',
-                },
-            },
-            scope = {
-                enabled = true,
-                char = '▏',
-                show_start = true,
-                show_end = true,
-                show_exact_scope = false,
-                injected_languages = true,
-                highlight = 'IblScope',
-                priority = 1024,
-                include = {
-                    node_type = {},
-                },
-                exclude = {
-                    language = {},
-                    node_type = {
-                        ['*'] = {
-                            'source_file',
-                            'program',
-                        },
-                        lua = {
-                            'chunk',
-                        },
-                        python = {
-                            'module',
-                        },
-                    },
-                },
-            },
+            char = icons.ui.LineLeft,
+            context_char = icons.ui.LineLeft,
+            show_trailing_blankline_indent = false,
+            show_first_indent_level = true,
+            use_treesitter = true,
+            show_current_context = true,
         },
     },
 }

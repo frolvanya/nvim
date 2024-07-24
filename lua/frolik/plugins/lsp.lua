@@ -25,6 +25,7 @@ return {
             'WhoIsSethDaniel/mason-tool-installer.nvim',
 
             { 'j-hui/fidget.nvim', opts = {} },
+            { 'RRethy/vim-illuminate' },
 
             {
                 'mrcjkb/rustaceanvim',
@@ -75,32 +76,40 @@ return {
                     map('gr', require('telescope.builtin').lsp_references, 'Goto References')
                     map('gD', vim.lsp.buf.declaration, 'Goto Declaration')
                     map('gI', require('telescope.builtin').lsp_implementations, 'Goto Implementation')
-                    map('<leader>la', vim.lsp.buf.code_action, 'Code Action')
                     map('K', show_documentation, 'Show hover')
 
-                    local client = vim.lsp.get_client_by_id(event.data.client_id)
-                    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-                        local highlight_augroup = vim.api.nvim_create_augroup('frolik-lsp-highlight', { clear = false })
-                        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-                            buffer = event.buf,
-                            group = highlight_augroup,
-                            callback = vim.lsp.buf.document_highlight,
-                        })
+                    map('<leader>la', vim.lsp.buf.code_action, 'Code Actions')
+                    map('<leader>ll', vim.lsp.codelens.run, 'CodeLens Actions')
+                    map('<leader>lj', vim.diagnostic.goto_next, 'Next Diagnostic')
+                    map('<leader>lk', vim.diagnostic.goto_prev, 'Next Diagnostic')
+                    map('<leader>li', '<cmd>LspInfo<cr>', 'Info')
+                    map('<leader>lI', '<cmd>Mason<cr>', 'Mason Info')
+                    map('<leader>lr', vim.lsp.buf.rename, 'Rename')
+                    map('<leader>lq', vim.diagnostic.setloclist, 'Quickfix')
 
-                        vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-                            buffer = event.buf,
-                            group = highlight_augroup,
-                            callback = vim.lsp.buf.clear_references,
-                        })
-
-                        vim.api.nvim_create_autocmd('LspDetach', {
-                            group = vim.api.nvim_create_augroup('frolik-lsp-detach', { clear = true }),
-                            callback = function(event2)
-                                vim.lsp.buf.clear_references()
-                                vim.api.nvim_clear_autocmds { group = 'frolik-lsp-highlight', buffer = event2.buf }
-                            end,
-                        })
-                    end
+                    -- local client = vim.lsp.get_client_by_id(event.data.client_id)
+                    -- if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+                    --     local highlight_augroup = vim.api.nvim_create_augroup('frolik-lsp-highlight', { clear = false })
+                    --     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+                    --         buffer = event.buf,
+                    --         group = highlight_augroup,
+                    --         callback = vim.lsp.buf.document_highlight,
+                    --     })
+                    --
+                    --     vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+                    --         buffer = event.buf,
+                    --         group = highlight_augroup,
+                    --         callback = vim.lsp.buf.clear_references,
+                    --     })
+                    --
+                    --     vim.api.nvim_create_autocmd('LspDetach', {
+                    --         group = vim.api.nvim_create_augroup('frolik-lsp-detach', { clear = true }),
+                    --         callback = function(event2)
+                    --             vim.lsp.buf.clear_references()
+                    --             vim.api.nvim_clear_autocmds { group = 'frolik-lsp-highlight', buffer = event2.buf }
+                    --         end,
+                    --     })
+                    -- end
 
                     if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
                         map('<leader>lh', function()

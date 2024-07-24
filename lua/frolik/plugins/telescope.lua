@@ -42,6 +42,10 @@ return {
             vim.keymap.set('n', '<leader>st', builtin.live_grep, { desc = 'Text' })
             vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Diagnostics' })
 
+            vim.keymap.set('n', '<leader>le', builtin.quickfix, { desc = 'Telescope Quickfix' })
+            vim.keymap.set('n', '<leader>ls', builtin.lsp_document_symbols, { desc = 'Document Symbols' })
+            vim.keymap.set('n', '<leader>lS', builtin.lsp_workspace_symbols, { desc = 'Workspace Symbols' })
+
             vim.keymap.set('n', '<leader>s/', function()
                 builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
                     previewer = false,
