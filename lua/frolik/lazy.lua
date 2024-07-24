@@ -39,6 +39,7 @@ require('lazy').setup({
     require 'frolik.plugins.leap',
     require 'frolik.plugins.numb',
     require 'frolik.plugins.harpoon',
+    require 'frolik.plugins.preview',
 
     require 'frolik.plugins.autopairs',
     require 'frolik.plugins.telescope',

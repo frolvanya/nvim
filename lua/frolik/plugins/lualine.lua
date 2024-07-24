@@ -1,7 +1,23 @@
 return {
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons', 'abeldekat/harpoonline' },
+        dependencies = {
+            {
+                'nvim-tree/nvim-web-devicons',
+                config = function()
+                    require('nvim-web-devicons').setup {
+                        override = {
+                            md = {
+                                icon = ' ',
+                                color = '#ffffff',
+                                name = 'Md',
+                            },
+                        },
+                    }
+                end,
+            },
+            'abeldekat/harpoonline',
+        },
         config = function()
             local colors = require 'frolik.colors'
 
