@@ -43,6 +43,7 @@ require("lazy").setup({
     require "frolik.plugins.numb",
     require "frolik.plugins.harpoon",
     require "frolik.plugins.preview",
+    require "frolik.plugins.surround",
 
     require "frolik.plugins.autopairs",
     require "frolik.plugins.telescope",

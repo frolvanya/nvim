@@ -21,9 +21,8 @@ vim.opt.smartcase = true
 
 vim.opt.signcolumn = "yes"
 
-vim.opt.updatetime = 250
-
-vim.opt.timeoutlen = 100
+vim.opt.updatetime = 50
+vim.opt.timeoutlen = 200
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -42,7 +41,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
         vim.opt_local.linebreak = true
     end,
 })
-
 
 vim.api.nvim_create_autocmd("FileType", {
     desc = "Smart close buffers",
