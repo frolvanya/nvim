@@ -1,4 +1,5 @@
 return {
+    { 'nvimtools/none-ls.nvim', lazy = true },
     {
         'mfussenegger/nvim-lint',
         event = { 'BufReadPre', 'BufNewFile' },

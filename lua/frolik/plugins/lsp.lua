@@ -28,22 +28,6 @@ return {
             { 'RRethy/vim-illuminate' },
 
             {
-                'mrcjkb/rustaceanvim',
-                lazy = false,
-            },
-            {
-                'saecki/crates.nvim',
-                tag = 'stable',
-                config = function()
-                    require('crates').setup {
-                        popup = {
-                            border = 'rounded',
-                        },
-                    }
-                end,
-            },
-
-            {
                 'folke/lazydev.nvim',
                 ft = 'lua',
                 opts = {
