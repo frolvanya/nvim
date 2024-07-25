@@ -2,7 +2,6 @@ local icons = require "frolik.icons"
 
 local default_diagnostic_config = {
     signs = {
-        active = true,
         values = {
             { name = "DiagnosticSignError", text = icons.diagnostics.Error },
             { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
@@ -10,7 +9,9 @@ local default_diagnostic_config = {
             { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
         },
     },
-    virtual_text = true,
+    virtual_text = {
+        prefix = "●",
+    },
     update_in_insert = false,
     underline = true,
     severity_sort = true,
