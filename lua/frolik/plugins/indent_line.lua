@@ -1,19 +1,19 @@
-local icons = require 'frolik.icons'
+local icons = require "frolik.icons"
 
 return {
     {
-        'lukas-reineke/indent-blankline.nvim',
-        commit = '9637670',
+        "lukas-reineke/indent-blankline.nvim",
+        commit = "9637670",
         opts = {
-            buftype_exclude = { 'terminal', 'nofile' },
+            buftype_exclude = { "terminal", "nofile" },
             filetype_exclude = {
-                'help',
-                'startify',
-                'dashboard',
-                'lazy',
-                'neogitstatus',
-                'Trouble',
-                'text',
+                "help",
+                "startify",
+                "dashboard",
+                "lazy",
+                "neogitstatus",
+                "Trouble",
+                "text",
             },
             char = icons.ui.LineLeft,
             context_char = icons.ui.LineLeft,

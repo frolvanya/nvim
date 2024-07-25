@@ -1,18 +1,18 @@
 return {
-    'tpope/vim-sleuth',
+    "tpope/vim-sleuth",
 
     {
-        'stevearc/conform.nvim',
-        event = { 'BufWritePre' },
-        cmd = { 'ConformInfo' },
+        "stevearc/conform.nvim",
+        event = { "BufWritePre" },
+        cmd = { "ConformInfo" },
         keys = {
             {
-                '<leader>lf',
+                "<leader>lf",
                 function()
-                    require('conform').format { async = true, lsp_fallback = true }
+                    require("conform").format { async = true, lsp_fallback = true }
                 end,
-                mode = '',
-                desc = 'Format buffer',
+                mode = "",
+                desc = "Format buffer",
             },
         },
         opts = {
@@ -25,9 +25,9 @@ return {
                 }
             end,
             formatters_by_ft = {
-                lua = { 'stylua' },
-                python = { 'black' },
-                json = { 'jq' },
+                lua = { "stylua" },
+                python = { "black" },
+                json = { "jq" },
             },
         },
     },

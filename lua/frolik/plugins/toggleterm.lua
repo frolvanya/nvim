@@ -1,18 +1,18 @@
 return {
     {
-        'akinsho/toggleterm.nvim',
+        "akinsho/toggleterm.nvim",
         config = function()
-            require('toggleterm').setup {
+            require("toggleterm").setup {
                 float_opts = {
-                    border = 'curved',
+                    border = "curved",
                     winblend = 0,
                     highlights = {
-                        border = 'Normal',
-                        background = 'Normal',
+                        border = "Normal",
+                        background = "Normal",
                     },
                 },
                 open_mapping = [[<M-3>]],
-                direction = 'float',
+                direction = "float",
             }
         end,
     },

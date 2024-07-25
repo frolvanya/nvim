@@ -1,12 +1,12 @@
 return {
     {
-        'nordtheme/vim',
+        "nordtheme/vim",
 
         priority = 1000,
         init = function()
-            vim.cmd.colorscheme 'nord'
+            vim.cmd.colorscheme "nord"
 
-            vim.cmd.hi 'Comment gui=none'
+            vim.cmd.hi "Comment gui=none"
         end,
     },
 }

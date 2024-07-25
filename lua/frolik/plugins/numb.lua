@@ -1,9 +1,9 @@
 return {
     {
-        'nacro90/numb.nvim',
-        event = 'BufRead',
+        "nacro90/numb.nvim",
+        event = "BufRead",
         config = function()
-            require('numb').setup()
+            require("numb").setup()
         end,
     },
 }
