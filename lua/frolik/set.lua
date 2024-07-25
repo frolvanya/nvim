@@ -42,3 +42,22 @@ vim.api.nvim_create_autocmd("BufEnter", {
         vim.opt_local.linebreak = true
     end,
 })
+
+
+vim.api.nvim_create_autocmd("FileType", {
+    desc = "Smart close buffers",
+    group = vim.api.nvim_create_augroup("_buffer_mappings", { clear = true }),
+    pattern = {
+        "qf",
+        "help",
+        "man",
+        "floaterm",
+        "lspinfo",
+        "lsp-installer",
+        "null-ls-info",
+    },
+    callback = function()
+        vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true })
+        vim.opt_local.buflisted = false
+    end,
+})
