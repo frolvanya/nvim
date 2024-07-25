@@ -19,6 +19,8 @@ vim.keymap.set('n', '<leader>pu', '<cmd>Lazy update<cr>', { desc = 'Update' })
 require('lazy').setup({
     require 'frolik.plugins.colorscheme',
 
+    require 'frolik.plugins.alpha',
+
     require 'frolik.plugins.oil',
     require 'frolik.plugins.which-key',
 

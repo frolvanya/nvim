@@ -120,14 +120,6 @@ return {
             'hrsh7th/cmp-cmdline',
             'hrsh7th/cmp-buffer',
             'onsails/lspkind.nvim',
-            {
-                'kylechui/nvim-surround',
-                version = '*',
-                event = 'VeryLazy',
-                config = function()
-                    require('nvim-surround').setup {}
-                end,
-            },
         },
         config = function()
             local status_cmp_ok, cmp_types = pcall(require, 'cmp.types.cmp')
