@@ -37,6 +37,19 @@ return {
                 },
             },
             { "Bilal2453/luvit-meta", lazy = true },
+
+            {
+                "kevinhwang91/nvim-bqf",
+                ft = "qf",
+                config = function()
+                    require("bqf").setup {
+                        preview = {
+                            winblend = 0,
+                            show_scroll_bar = false,
+                        },
+                    }
+                end,
+            },
         },
         config = function()
             vim.api.nvim_create_autocmd("LspAttach", {
