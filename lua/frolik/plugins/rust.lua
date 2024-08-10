@@ -9,6 +9,15 @@ return {
                         border = "rounded",
                     },
                 },
+                server = {
+                    default_settings = {
+                        ["rust-analyzer"] = {
+                            cargo = {
+                                features = "all",
+                            },
+                        },
+                    },
+                },
             }
         end,
     },
