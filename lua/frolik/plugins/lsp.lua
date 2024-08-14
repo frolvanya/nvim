@@ -41,11 +41,6 @@ end
 
 return {
     {
-        "chrisgrieser/nvim-lsp-endhints",
-        event = "LspAttach",
-        opts = {},
-    },
-    {
         "neovim/nvim-lspconfig",
         dependencies = {
             {
