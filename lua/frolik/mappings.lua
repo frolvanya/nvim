@@ -11,3 +11,6 @@ vim.keymap.set("n", "<leader>bw", "<cmd>bdelete<cr>", { desc = "Close buffer" })
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll half page down" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll half page up" })
+
+vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "Lsp Info" })
+vim.keymap.set("n", "<leader>lI", "<cmd>Mason<cr>", { desc = "Mason Info" })
