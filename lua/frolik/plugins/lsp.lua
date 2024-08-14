@@ -52,7 +52,22 @@ return {
             "williamboman/mason-lspconfig.nvim",
             "WhoIsSethDaniel/mason-tool-installer.nvim",
 
-            { "j-hui/fidget.nvim", opts = {} },
+            {
+                "j-hui/fidget.nvim",
+                config = function()
+                    require("fidget").setup {
+                        progress = {
+                            display = {
+                                render_limit = 20,
+                                progress_icon = { pattern = "circle" },
+                            },
+                        },
+                        notification = {
+                            poll_rate = 20,
+                        },
+                    }
+                end,
+            },
             { "RRethy/vim-illuminate" },
 
             {
