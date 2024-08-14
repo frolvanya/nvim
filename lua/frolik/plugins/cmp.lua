@@ -286,13 +286,13 @@ return {
                     { name = "tmux" },
                 },
                 formatting = {
-                    fields = { "kind", "abbr", "menu" },
+                    fields = { "kind", "abbr" },
                     expandable_indicator = false,
                     format = lspkind.cmp_format {
                         mode = "symbol",
                         maxwidth = 50,
                         ellipsis_char = icons.ui.Ellipsis,
-                        symbol_map = { Copilot = icons.git.Octoface, Snippet = icons.kind.Snippet },
+                        symbol_map = { Copilot = icons.git.Octoface, Snippet = icons.kind.Snippet, Version = icons.kind.Version },
                         ---@diagnostic disable-next-line: unused-local
                         before = function(entry, vim_item)
                             vim_item.menu = nil

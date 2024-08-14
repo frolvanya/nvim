@@ -30,6 +30,11 @@ return {
                 null_ls = {
                     enabled = true,
                 },
+                completion = {
+                    cmp = {
+                        enabled = true,
+                    },
+                },
                 popup = {
                     border = "rounded",
                 },
