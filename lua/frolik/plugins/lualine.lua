@@ -180,6 +180,17 @@ return {
                         },
                     },
                 },
+                extensions = {
+                    require "frolik.plugins.lualine-extensions.copilot-chat",
+                    require "frolik.plugins.lualine-extensions.fugitive",
+                    require "frolik.plugins.lualine-extensions.harpoon-ext",
+                    require "frolik.plugins.lualine-extensions.lazy",
+                    require "frolik.plugins.lualine-extensions.mason",
+                    require "frolik.plugins.lualine-extensions.oil",
+                    require "frolik.plugins.lualine-extensions.toggleterm",
+                    require "frolik.plugins.lualine-extensions.telescope",
+                    require "frolik.plugins.lualine-extensions.quickfix",
+                },
             }
         end,
     },
