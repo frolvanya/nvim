@@ -194,6 +194,8 @@ return {
                     end,
                 },
             }
+
+            require("lspconfig").protols.setup {}
         end,
     },
 }
