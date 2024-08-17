@@ -36,6 +36,7 @@ vim.opt.scrolloff = 8
 vim.opt.pumheight = 10
 
 vim.opt.hlsearch = false
+vim.opt.virtualedit = "block"
 
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*.txt", "*.tex", "*.md" },
