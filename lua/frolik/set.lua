@@ -52,6 +52,7 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = {
         "qf",
         "vim",
+        "git",
         "help",
         "man",
         "floaterm",
