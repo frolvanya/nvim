@@ -59,6 +59,8 @@ vim.api.nvim_create_autocmd("FileType", {
         "lspinfo",
         "lsp-installer",
         "null-ls-info",
+        "neotest-summary",
+        "neotest-output-panel",
     },
     callback = function()
         vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true })

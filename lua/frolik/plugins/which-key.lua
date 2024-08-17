@@ -22,6 +22,7 @@ return {
                 { "<leader>p", group = "Plugins" },
                 { "<leader>s", group = "Search" },
                 { "<leader>t", group = "Trouble" },
+                { "<leader>n", group = "Neotest" },
                 { "<leader>c", group = "Crates" },
                 { "<leader>r", group = "Rust" },
                 { "<leader>m", group = "Markdown" },

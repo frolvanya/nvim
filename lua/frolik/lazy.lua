@@ -28,6 +28,7 @@ require("lazy").setup({
     require "frolik.plugins.cmp",
     require "frolik.plugins.rust",
     require "frolik.plugins.copilot",
+    require "frolik.plugins.neotest",
 
     require "frolik.plugins.lint",
     require "frolik.plugins.format",
