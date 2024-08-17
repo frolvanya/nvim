@@ -76,6 +76,20 @@ return {
                     require("inc_rename").setup()
                 end,
             },
+            {
+                "rachartier/tiny-code-action.nvim",
+                dependencies = {
+                    { "nvim-lua/plenary.nvim" },
+                    { "nvim-telescope/telescope.nvim" },
+                },
+                event = "LspAttach",
+                config = function()
+                    vim.keymap.set("n", "<leader>la", function()
+                        require("tiny-code-action").code_action()
+                    end, { noremap = true, silent = true })
+                    require("tiny-code-action").setup()
+                end,
+            },
 
             {
                 "folke/lazydev.nvim",
@@ -127,7 +141,7 @@ return {
                     map("gI", require("telescope.builtin").lsp_implementations, "Goto Implementation")
                     map("K", show_documentation, "Show hover")
 
-                    map("<leader>la", vim.lsp.buf.code_action, "Code Actions")
+                    -- map("<leader>la", vim.lsp.buf.code_action, "Code Actions")
                     map("<leader>ll", vim.lsp.codelens.run, "CodeLens Actions")
                     map("<leader>lj", vim.diagnostic.goto_next, "Next Diagnostic")
                     map("<leader>lk", vim.diagnostic.goto_prev, "Next Diagnostic")

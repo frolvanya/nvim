@@ -1,6 +1,7 @@
 return {
     {
         "nvim-lualine/lualine.nvim",
+        event = "VimEnter",
         dependencies = {
             {
                 "nvim-tree/nvim-web-devicons",
@@ -184,6 +185,7 @@ return {
                     require "frolik.plugins.lualine-extensions.copilot-chat",
                     require "frolik.plugins.lualine-extensions.fugitive",
                     require "frolik.plugins.lualine-extensions.harpoon-ext",
+                    require "frolik.plugins.lualine-extensions.alpha",
                     require "frolik.plugins.lualine-extensions.lazy",
                     require "frolik.plugins.lualine-extensions.mason",
                     require "frolik.plugins.lualine-extensions.oil",
