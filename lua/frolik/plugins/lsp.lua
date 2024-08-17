@@ -69,6 +69,13 @@ return {
                 end,
             },
             { "RRethy/vim-illuminate" },
+            {
+                "smjonas/inc-rename.nvim",
+                config = function()
+                    ---@diagnostic disable-next-line: missing-parameter
+                    require("inc_rename").setup()
+                end,
+            },
 
             {
                 "folke/lazydev.nvim",
@@ -85,7 +92,9 @@ return {
                 "kevinhwang91/nvim-bqf",
                 ft = "qf",
                 config = function()
+                    ---@diagnostic disable-next-line: missing-fields
                     require("bqf").setup {
+                        ---@diagnostic disable-next-line: missing-fields
                         preview = {
                             winblend = 0,
                             show_scroll_bar = false,
@@ -122,8 +131,10 @@ return {
                     map("<leader>ll", vim.lsp.codelens.run, "CodeLens Actions")
                     map("<leader>lj", vim.diagnostic.goto_next, "Next Diagnostic")
                     map("<leader>lk", vim.diagnostic.goto_prev, "Next Diagnostic")
-                    map("<leader>lr", vim.lsp.buf.rename, "Rename")
                     map("<leader>lq", vim.diagnostic.setloclist, "Quickfix")
+                    vim.keymap.set("n", "<leader>lr", function()
+                        return ":IncRename " .. vim.fn.expand "<cword>"
+                    end, { expr = true, desc = "Rename" })
 
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
 
