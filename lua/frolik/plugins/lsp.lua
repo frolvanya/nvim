@@ -161,6 +161,20 @@ return {
                         },
                     },
                 },
+                clangd = {
+                    cmd = {
+                        "clangd",
+                        "--all-scopes-completion",
+                        "--background-index",
+                        "--pch-storage=disk",
+                        "--log=info",
+                        "--completion-style=detailed",
+                        "--enable-config",
+                        "--clang-tidy",
+                        "--offset-encoding=utf-16",
+                    },
+                    filetypes = { "c", "cpp" },
+                },
             }
 
             require("mason").setup()

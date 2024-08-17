@@ -28,6 +28,8 @@ return {
                 lua = { "stylua" },
                 python = { "black" },
                 json = { "jq" },
+                c = { "clang-format" },
+                cpp = { "clang-format" },
             },
         },
     },
