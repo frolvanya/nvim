@@ -67,3 +67,10 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.buflisted = false
     end,
 })
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "AlphaReady",
+    callback = function()
+        vim.bo.buflisted = true
+    end,
+})
