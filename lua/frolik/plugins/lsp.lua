@@ -126,7 +126,7 @@ return {
                     map("gI", require("telescope.builtin").lsp_implementations, "Goto Implementation")
                     map("K", show_documentation, "Show hover")
 
-                    map("<leader>la", vim.lsp.buf.code_action, "Code Actions")
+                    vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Code Actions" })
                     map("<leader>ll", vim.lsp.codelens.run, "CodeLens Actions")
                     map("<leader>lj", vim.diagnostic.goto_next, "Next Diagnostic")
                     map("<leader>lk", vim.diagnostic.goto_prev, "Next Diagnostic")
@@ -187,6 +187,9 @@ return {
             require("mason-lspconfig").setup {
                 handlers = {
                     function(server_name)
+                        if server_name == "tsserver" then
+                            server_name = "ts_ls"
+                        end
                         local server = servers[server_name] or {}
                         server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
                         require("lspconfig")[server_name].setup(server)
@@ -194,7 +197,18 @@ return {
                 },
             }
 
-            require("lspconfig").protols.setup {}
+            -- require("lspconfig").protols.setup {}
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = "proto",
+                callback = function(ev)
+                    vim.lsp.start {
+                        name = "proto-lsp",
+                        cmd = { "/Users/frolik/Documents/Scripts/rust-scripts/proto-lsp/target/debug/proto-lsp" },
+
+                        root_dir = vim.fs.root(ev.buf, { "Cargo.toml" }),
+                    }
+                end,
+            })
         end,
     },
 }

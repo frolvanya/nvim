@@ -18,7 +18,7 @@ return {
                 { "<leader>d", group = "Debug" },
                 { "<leader>g", group = "Git" },
                 { "<leader>h", group = "Harpoon" },
-                { "<leader>l", group = "LSP" },
+                { "<leader>l", group = "LSP", mode = "nv" },
                 { "<leader>p", group = "Plugins" },
                 { "<leader>s", group = "Search" },
                 { "<leader>t", group = "Trouble" },

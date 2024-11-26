@@ -120,6 +120,7 @@ return {
             "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-buffer",
             "onsails/lspkind.nvim",
+            "ryo33/nvim-cmp-rust",
         },
         config = function()
             local status_cmp_ok, cmp_types = pcall(require, "cmp.types.cmp")
@@ -158,8 +159,9 @@ return {
                 completion = {
                     keyword_length = 1,
                 },
-                experimental = {
-                    ghost_text = true,
+                performance = {
+                    debounce = 0,
+                    throttle = 0,
                 },
                 preselect = "None",
                 mapping = cmp_mapping.preset.insert {
@@ -326,6 +328,31 @@ return {
                     },
                 },
             }
+
+            local compare = require "cmp.config.compare"
+            cmp.setup.filetype({ "rust" }, {
+                sorting = {
+                    priority_weight = 2,
+                    comparators = {
+                        -- deprioritize `.box`, `.mut`, etc.
+                        require("cmp-rust").deprioritize_postfix,
+                        -- deprioritize `Borrow::borrow` and `BorrowMut::borrow_mut`
+                        require("cmp-rust").deprioritize_borrow,
+                        -- deprioritize `Deref::deref` and `DerefMut::deref_mut`
+                        require("cmp-rust").deprioritize_deref,
+                        -- deprioritize `Into::into`, `Clone::clone`, etc.
+                        require("cmp-rust").deprioritize_common_traits,
+                        compare.offset,
+                        compare.exact,
+                        compare.score,
+                        compare.recently_used,
+                        compare.locality,
+                        compare.sort_text,
+                        compare.length,
+                        compare.order,
+                    },
+                },
+            })
 
             cmp.setup.cmdline({ "/", "?" }, {
                 mapping = cmp.mapping.preset.cmdline(),

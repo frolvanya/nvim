@@ -74,3 +74,10 @@ vim.api.nvim_create_autocmd("User", {
         vim.bo.buflisted = true
     end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "GitGraph",
+    callback = function()
+        vim.bo.buflisted = true
+    end,
+})
