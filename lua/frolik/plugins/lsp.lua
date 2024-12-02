@@ -70,13 +70,6 @@ return {
             },
             { "RRethy/vim-illuminate" },
             {
-                "smjonas/inc-rename.nvim",
-                config = function()
-                    ---@diagnostic disable-next-line: missing-parameter
-                    require("inc_rename").setup()
-                end,
-            },
-            {
                 "folke/lazydev.nvim",
                 ft = "lua",
                 opts = {
@@ -131,9 +124,7 @@ return {
                     map("<leader>lj", vim.diagnostic.goto_next, "Next Diagnostic")
                     map("<leader>lk", vim.diagnostic.goto_prev, "Next Diagnostic")
                     map("<leader>lq", vim.diagnostic.setloclist, "Quickfix")
-                    vim.keymap.set("n", "<leader>lr", function()
-                        return ":IncRename " .. vim.fn.expand "<cword>"
-                    end, { expr = true, desc = "Rename" })
+                    map("<leader>lr", vim.lsp.buf.rename, "Rename")
 
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
 
