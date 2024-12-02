@@ -39,7 +39,7 @@ vim.keymap.set("n", "<leader>aq", function()
         vim.cmd("CopilotChatBuffer " .. input)
     end
 end, { desc = "Quick chat" })
-vim.keymap.set("n", "<leader>af", "<cmd>CopilotChatFixDiagnostic<cr>", { desc = "Fix Diagnostic" })
+vim.keymap.set({ "n", "v" }, "<leader>af", "<cmd>CopilotChatFix<cr>", { desc = "Fix Diagnostic" })
 vim.keymap.set("n", "<leader>al", "<cmd>CopilotChatReset<cr>", { desc = "Clear buffer and chat history" })
 vim.keymap.set("n", "<leader>at", "<cmd>CopilotChatToggle<cr>", { desc = "Toggle" })
 
