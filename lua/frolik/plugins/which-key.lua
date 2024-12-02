@@ -1,5 +1,14 @@
 return {
     {
+        "max397574/better-escape.nvim",
+        config = function()
+            require("better_escape").setup {
+                mapping = { "jk" },
+                timeout = 200,
+            }
+        end,
+    },
+    {
         "folke/which-key.nvim",
         event = "VimEnter",
         config = function()
