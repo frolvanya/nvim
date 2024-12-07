@@ -94,6 +94,8 @@ return {
                     }
                 end,
             },
+
+            { "LunarVim/bigfile.nvim" },
         },
         config = function()
             vim.api.nvim_create_autocmd("LspAttach", {
