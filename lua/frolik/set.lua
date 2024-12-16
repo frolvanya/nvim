@@ -86,6 +86,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     desc = "Create missing directories on file save",
     group = vim.api.nvim_create_augroup("_auto_create_dirs", { clear = true }),
     callback = function(args)
+        if vim.bo[args.buf].buftype ~= "" or args.file:match "^oil:/" then
+            return
+        end
+
         local dir = vim.fn.fnamemodify(args.file, ":h")
         if vim.fn.isdirectory(dir) == 0 then
             vim.fn.mkdir(dir, "p")
