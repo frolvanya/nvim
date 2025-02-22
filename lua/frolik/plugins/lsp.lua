@@ -46,7 +46,7 @@ return {
             {
                 "williamboman/mason.nvim",
                 config = function()
-                    require("mason").setup { ui = { border = "rounded" } }
+                    require("mason").setup { ui = { border = "rounded", backdrop = 100 } }
                 end,
             },
             "williamboman/mason-lspconfig.nvim",
