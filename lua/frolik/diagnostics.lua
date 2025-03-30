@@ -1,12 +1,18 @@
 local icons = require "frolik.icons"
 
-local default_diagnostic_config = {
+vim.diagnostic.config {
     signs = {
-        values = {
-            { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-            { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-            { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-            { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+        text = {
+            [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+            [vim.diagnostic.severity.WARN] = icons.diagnostics.Warning,
+            [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+            [vim.diagnostic.severity.INFO] = icons.diagnostics.Information,
+        },
+        numhl = {
+            [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+            [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+            [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+            [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
         },
     },
     virtual_text = {
@@ -19,16 +25,8 @@ local default_diagnostic_config = {
         focusable = true,
         style = "minimal",
         border = "rounded",
-        source = "always",
+        source = true,
         header = "",
         prefix = "",
     },
 }
-
-vim.diagnostic.config(default_diagnostic_config)
-
-if vim.g.have_nerd_font then
-    for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
-        vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
-    end
-end

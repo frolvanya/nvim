@@ -4,6 +4,8 @@ local function show_documentation()
         vim.cmd("h " .. vim.fn.expand "<cword>")
     elseif vim.tbl_contains({ "man" }, filetype) then
         vim.cmd("Man " .. vim.fn.expand "<cword>")
+    elseif vim.tbl_contains({ "rust" }, filetype) then
+        vim.cmd "RustLsp hover actions"
     elseif vim.fn.expand "%:t" == "Cargo.toml" and require("crates").popup_available() then
         require("crates").show_popup()
     else

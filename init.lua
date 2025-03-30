@@ -5,5 +5,5 @@ require "frolik.colorscheme"
 require "frolik.lazy"
 
 require "frolik.floating"
-require "frolik.statuscolumn"
+-- require "frolik.statuscolumn"
 require "frolik.diagnostics"
