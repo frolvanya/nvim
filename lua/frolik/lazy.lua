@@ -38,7 +38,7 @@ require("lazy").setup({
 
     require "frolik.plugins.lualine",
     require "frolik.plugins.toggleterm",
-    require "frolik.plugins.indent_line",
+    require "frolik.plugins.snacks",
 
     require "frolik.plugins.leap",
     require "frolik.plugins.numb",
