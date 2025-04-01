@@ -107,6 +107,10 @@ return {
                         vim.keymap.set("n", keys, func, { buffer = event.buf, desc = desc })
                     end
 
+                    pcall(vim.keymap.del, "n", "gra")
+                    pcall(vim.keymap.del, "n", "gri")
+                    pcall(vim.keymap.del, "n", "grn")
+                    pcall(vim.keymap.del, "n", "grr")
                     map("gl", function()
                         local float = vim.diagnostic.config().float
 
