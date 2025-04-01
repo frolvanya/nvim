@@ -130,7 +130,9 @@ return {
                             separator = { left = "", right = "" },
                             right_padding = 2,
                             symbols = { alternate_file = "" },
-                            max_length = vim.o.columns * 0.75,
+                            max_length = function()
+                                return vim.go.columns * 0.75
+                            end,
                             filetype_names = {
                                 TelescopePrompt = icons.ui.Telescope .. " Telescope",
                                 dashboard = " Dashboard",
