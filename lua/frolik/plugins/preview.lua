@@ -7,16 +7,13 @@ return {
         },
     },
     {
-        "OXY2DEV/markview.nvim",
-        lazy = false,
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons",
-        },
+        "MeanderingProgrammer/render-markdown.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
         opts = {
-            preview = {
-                modes = { "n", "no", "i" },
-                hybrid_modes = { "n", "i" },
+            overrides = {
+                buftype = {
+                    nofile = { enabled = false },
+                },
             },
         },
     },
