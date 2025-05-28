@@ -40,7 +40,7 @@ require("lazy").setup({
     require "frolik.plugins.toggleterm",
     require "frolik.plugins.snacks",
 
-    require "frolik.plugins.leap",
+    require "frolik.plugins.flash",
     require "frolik.plugins.numb",
     require "frolik.plugins.harpoon",
     require "frolik.plugins.preview",
