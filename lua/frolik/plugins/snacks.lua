@@ -3,7 +3,9 @@ local icons = require "frolik.icons"
 return {
     "folke/snacks.nvim",
     opts = {
-        statuscolumn = {},
+        bigfile = { enabled = true },
+        quickfile = { enabled = true },
+        statuscolumn = { enabled = true },
         indent = {
             indent = {
                 char = icons.ui.LineLeft,
