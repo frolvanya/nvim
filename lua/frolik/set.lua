@@ -25,12 +25,17 @@ vim.opt.smartcase = true
 vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 50
+
 vim.opt.timeoutlen = 200
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.opt.cursorline = true
+vim.opt.guicursor = table.concat({
+    "n-v-c:block",
+    "i:ver25",
+}, ",")
 
 vim.opt.scrolloff = 8
 vim.opt.pumheight = 10
