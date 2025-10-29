@@ -32,7 +32,7 @@ return {
 
             wk.add {
                 { "g", group = "Goto" },
-                { "<leader>a", group = "Copilot Chat", mode = "nv" },
+                { "<leader>a", group = "Codex", mode = "nv" },
                 { "<leader>b", group = "Buffers" },
                 { "<leader>d", group = "Debug" },
                 { "<leader>g", group = "Git" },
