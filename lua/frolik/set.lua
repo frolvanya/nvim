@@ -43,6 +43,8 @@ vim.opt.pumheight = 10
 vim.opt.hlsearch = false
 vim.opt.virtualedit = "block"
 
+vim.opt.winborder = "rounded"
+
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*.txt", "*.tex", "*.md" },
     callback = function()
