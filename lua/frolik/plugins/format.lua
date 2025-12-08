@@ -30,11 +30,7 @@ return {
                 json = { "jq" },
                 c = { "clang-format" },
                 cpp = { "clang-format" },
-            },
-            formatters = {
-                jq = {
-                    args = { ".", "--indent", "4" },
-                },
+                solidity = { "forge_fmt" },
             },
         },
     },
