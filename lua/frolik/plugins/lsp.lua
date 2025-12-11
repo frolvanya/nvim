@@ -172,6 +172,16 @@ return {
                     },
                     filetypes = { "c", "cpp" },
                 },
+                solidity_ls = {
+                    init_options = vim.fn.stdpath "cache",
+                    settings = {
+                        solidity = {
+                            defaultCompiler = "embedded",
+                            compileUsingRemoteVersion = "",
+                            compileUsingLocalVersion = "",
+                        },
+                    },
+                },
             }
 
             require("mason").setup()
