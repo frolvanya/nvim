@@ -48,7 +48,6 @@ require("lazy").setup({
     require "frolik.plugins.surround",
 
     require "frolik.plugins.autopairs",
-    require "frolik.plugins.telescope",
 }, {
     ui = {
         backdrop = 100,

@@ -134,12 +134,14 @@ return {
                                 return vim.go.columns * 0.75
                             end,
                             filetype_names = {
-                                TelescopePrompt = icons.ui.Telescope .. " Telescope",
                                 dashboard = " Dashboard",
                                 packer = " Packer",
                                 fzf = "FZF",
                                 alpha = " Alpha",
                                 oil = "󰏇  Oil",
+                                snacks_picker_input = " Snacks",
+                                snacks_picker_list = " Snacks",
+                                snacks_picker_preview = " Snacks",
                                 checkhealth = "󰥱 Checkhealth",
                                 harpoon = "󰈺 Harpoon",
                                 fugitive = "Fugitive",
@@ -191,8 +193,8 @@ return {
                     require "frolik.plugins.lualine-extensions.lazy",
                     require "frolik.plugins.lualine-extensions.mason",
                     require "frolik.plugins.lualine-extensions.oil",
+                    require "frolik.plugins.lualine-extensions.snacks",
                     require "frolik.plugins.lualine-extensions.toggleterm",
-                    require "frolik.plugins.lualine-extensions.telescope",
                     require "frolik.plugins.lualine-extensions.quickfix",
                 },
             }

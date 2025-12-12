@@ -22,10 +22,10 @@ return {
             }
 
             dashboard.section.buttons.val = {
-                dashboard.button("f", icons.ui.FindFile .. " Find file", "<cmd>Telescope find_files<cr>"),
+                dashboard.button("f", icons.ui.FindFile .. " Find file", "<cmd>lua require('snacks').picker.files()<cr>"),
                 dashboard.button("n", icons.ui.NewFile .. " New file", "<cmd>enew<cr>"),
-                dashboard.button("r", icons.ui.History .. " Recent files", "<cmd>Telescope oldfiles<cr>"),
-                dashboard.button("t", icons.ui.FindText .. " Find text", "<cmd>Telescope live_grep<cr>"),
+                dashboard.button("r", icons.ui.History .. " Recent files", "<cmd>lua require('snacks').picker.recent()<cr>"),
+                dashboard.button("t", icons.ui.FindText .. " Find text", "<cmd>lua require('snacks').picker.grep()<cr>"),
                 dashboard.button("c", icons.ui.Gear .. " Configuration", "<cmd>edit ~/.config/nvim/init.lua<cr>"),
                 dashboard.button("q", icons.ui.Close .. " Quit", "<cmd>q<cr>"),
             }
