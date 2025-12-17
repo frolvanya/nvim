@@ -153,6 +153,7 @@ return {
             sources = {
                 files = {
                     hidden = true,
+                    ignored = true,
                 },
             },
         },
