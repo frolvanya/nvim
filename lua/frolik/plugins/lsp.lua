@@ -134,8 +134,12 @@ return {
 
                     vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Code Actions" })
                     map("<leader>ll", vim.lsp.codelens.run, "CodeLens Actions")
-                    map("<leader>lj", vim.diagnostic.goto_next, "Next Diagnostic")
-                    map("<leader>lk", vim.diagnostic.goto_prev, "Next Diagnostic")
+                    map("<leader>lj", function()
+                        vim.diagnostic.jump { count = 1, float = true }
+                    end, "Next Diagnostic")
+                    map("<leader>lk", function()
+                        vim.diagnostic.jump { count = -1, float = true }
+                    end, "Previous Diagnostic")
                     map("<leader>lq", vim.diagnostic.setloclist, "Quickfix")
                     map("<leader>lr", vim.lsp.buf.rename, "Rename")
 
