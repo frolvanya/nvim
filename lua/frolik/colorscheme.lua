@@ -5,6 +5,7 @@ vim.cmd("autocmd ColorScheme * highlight FloatBorder guifg=" .. colors.nord5 .. 
 vim.cmd("autocmd ColorScheme * highlight LspInfoBorder guifg=" .. colors.nord5 .. " guibg=NONE")
 vim.cmd("autocmd ColorScheme * highlight IncSearch guifg=" .. colors.nord1 .. " guibg=" .. colors.nord8)
 vim.cmd("autocmd ColorScheme * highlight Search guifg=" .. colors.nord8 .. " guibg=NONE")
+vim.cmd("autocmd ColorScheme * highlight Substitute guifg=" .. colors.nord1 .. " guibg=" .. colors.nord8)
 vim.cmd("autocmd ColorScheme * highlight FlashLabel guifg=" .. colors.nord1 .. " guibg=" .. colors.nord8)
 vim.cmd("autocmd ColorScheme * highlight SnacksPickerMatch guifg=" .. colors.nord8 .. " guibg=NONE gui=bold")
 vim.cmd("autocmd ColorScheme * highlight SnacksPickerDir guifg=" .. colors.nord5 .. " guibg=NONE")
