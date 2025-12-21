@@ -67,6 +67,7 @@ vim.api.nvim_create_autocmd("FileType", {
         "lsp-installer",
         "null-ls-info",
         "neotest-summary",
+        "neotest-output",
         "neotest-output-panel",
     },
     callback = function()
