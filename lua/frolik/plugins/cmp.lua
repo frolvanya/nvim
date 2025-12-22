@@ -376,18 +376,14 @@ return {
 
     {
         "nvim-treesitter/nvim-treesitter",
-        opts = {
-            ensure_installed = { "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "markdown_inline", "query", "vim", "vimdoc" },
-            auto_install = true,
-            highlight = {
-                enable = true,
-            },
-            indent = { enable = true },
-        },
+        branch = "main",
+        lazy = false,
+        build = ":TSUpdate",
         config = function(_, opts)
-            require("nvim-treesitter.install").prefer_git = true
-            ---@diagnostic disable-next-line: missing-fields
-            require("nvim-treesitter.configs").setup(opts)
+            local ts = require "nvim-treesitter"
+
+            ts.setup { install_dir = opts.install_dir }
+            ts.install { "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "markdown_inline", "query", "vim", "vimdoc", "rust" }
         end,
     },
 }
