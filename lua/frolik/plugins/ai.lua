@@ -1,5 +1,3 @@
-vim.keymap.set("n", "<leader>at", "<cmd>CodexToggle<cr>", { desc = "Toggle" })
-
 return {
     {
         "zbirenbaum/copilot.lua",
@@ -16,11 +14,5 @@ return {
         config = function()
             require("copilot_cmp").setup()
         end,
-    },
-    {
-        "johnseth97/codex.nvim",
-        opts = {
-            border = "rounded",
-        },
     },
 }
