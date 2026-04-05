@@ -15,7 +15,7 @@ end
 
 local function setup_codelens_refresh(client, bufnr)
     local status_ok, codelens_supported = pcall(function()
-        return client.supports_method "textDocument/codeLens"
+        return client:supports_method "textDocument/codeLens"
     end)
     if not status_ok or not codelens_supported then
         return
@@ -36,7 +36,7 @@ local function setup_codelens_refresh(client, bufnr)
         group = group,
         buffer = bufnr,
         callback = function()
-            vim.lsp.codelens.refresh { bufnr = bufnr }
+            vim.lsp.codelens.enable(true, { bufnr = bufnr })
         end,
     })
 end
@@ -110,6 +110,7 @@ return {
                     pcall(vim.keymap.del, "n", "grn")
                     pcall(vim.keymap.del, "n", "grr")
                     pcall(vim.keymap.del, "n", "grt")
+                    pcall(vim.keymap.del, "n", "grx")
                     map("gl", function()
                         local float = vim.diagnostic.config().float
 
@@ -145,7 +146,7 @@ return {
 
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-                    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+                    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
                         map("<leader>lh", function()
                             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
                         end, "Toggle Inlay Hints")
