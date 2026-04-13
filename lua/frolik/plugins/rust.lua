@@ -2,6 +2,7 @@ return {
     {
         "mrcjkb/rustaceanvim",
         lazy = false,
+        version = "9",
         config = function()
             local function get_codelldb_adapter()
                 local ok, mason_registry = pcall(require, "mason-registry")
