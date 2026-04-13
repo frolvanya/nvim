@@ -13,32 +13,117 @@ local function show_documentation()
     end
 end
 
-local function setup_codelens_refresh(client, bufnr)
-    local status_ok, codelens_supported = pcall(function()
+-- Patch codelens to render as eol instead of virt_lines (Neovim 0.12 hardcodes virt_lines).
+-- Finds the internal Provider class via debug.getupvalue and wraps its on_win method.
+local codelens_patched = false
+local function patch_codelens_eol()
+    if codelens_patched then
+        return
+    end
+
+    local function find_provider()
+        for _, fn in pairs(vim.lsp.codelens) do
+            if type(fn) ~= "function" then
+                goto next
+            end
+            local i = 1
+            while true do
+                local name, value = debug.getupvalue(fn, i)
+                if not name then
+                    break
+                end
+                if type(value) == "table" and rawget(value, "on_win") then
+                    return value
+                end
+                if type(value) == "function" then
+                    local j = 1
+                    while true do
+                        local n2, v2 = debug.getupvalue(value, j)
+                        if not n2 then
+                            break
+                        end
+                        if type(v2) == "table" and rawget(v2, "on_win") then
+                            return v2
+                        end
+                        j = j + 1
+                    end
+                end
+                i = i + 1
+            end
+            ::next::
+        end
+    end
+
+    local Provider = find_provider()
+    if not Provider then
+        return
+    end
+    codelens_patched = true
+
+    -- Replace on_win: faithful copy of the original, only virt_lines changed to virt_text eol
+    function Provider:on_win(toprow, botrow)
+        for row = toprow, botrow do
+            if self.row_version[row] ~= self.version then
+                for client_id, state in pairs(self.client_state) do
+                    local bufnr = self.bufnr
+                    local namespace = state.namespace
+
+                    vim.api.nvim_buf_clear_namespace(bufnr, namespace, row, row + 1)
+
+                    local lenses = state.row_lenses[row]
+                    if lenses then
+                        table.sort(lenses, function(a, b)
+                            return a.range.start.character < b.range.start.character
+                        end)
+
+                        local client = vim.lsp.get_client_by_id(client_id)
+                        local virt_text = {}
+
+                        for _, lens in ipairs(lenses) do
+                            if not lens.command then
+                                if client then
+                                    self:resolve(client, lens)
+                                end
+                            else
+                                vim.list_extend(virt_text, {
+                                    { lens.command.title, "LspCodeLens" },
+                                    { " | ", "LspCodeLensSeparator" },
+                                })
+                            end
+                        end
+                        -- Remove trailing separator
+                        table.remove(virt_text)
+
+                        if #virt_text > 0 then
+                            vim.api.nvim_buf_set_extmark(bufnr, namespace, row, 0, {
+                                virt_text = virt_text,
+                                virt_text_pos = "eol",
+                                hl_mode = "combine",
+                            })
+                        end
+                    end
+                    self.row_version[row] = self.version
+                end
+            end
+        end
+
+        if botrow == vim.api.nvim_buf_line_count(self.bufnr) - 1 then
+            for _, state in pairs(self.client_state) do
+                vim.api.nvim_buf_clear_namespace(self.bufnr, state.namespace, botrow + 1, -1)
+            end
+        end
+    end
+end
+
+local function setup_codelens(client, bufnr)
+    local ok, supported = pcall(function()
         return client:supports_method "textDocument/codeLens"
     end)
-    if not status_ok or not codelens_supported then
+    if not ok or not supported then
         return
     end
-    local group = "lsp_code_lens_refresh"
-    local cl_events = { "BufEnter", "InsertLeave" }
-    local ok, cl_autocmds = pcall(vim.api.nvim_get_autocmds, {
-        group = group,
-        buffer = bufnr,
-        event = cl_events,
-    })
-
-    if ok and #cl_autocmds > 0 then
-        return
-    end
-    vim.api.nvim_create_augroup(group, { clear = false })
-    vim.api.nvim_create_autocmd(cl_events, {
-        group = group,
-        buffer = bufnr,
-        callback = function()
-            vim.lsp.codelens.enable(true, { bufnr = bufnr })
-        end,
-    })
+    vim.lsp.codelens.enable(true, { bufnr = bufnr })
+    patch_codelens_eol()
 end
 
 return {
@@ -152,7 +237,7 @@ return {
                         end, "Toggle Inlay Hints")
                     end
 
-                    setup_codelens_refresh(client, event.buf)
+                    setup_codelens(client, event.buf)
                 end,
             })
 
