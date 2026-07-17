@@ -17,6 +17,9 @@ vim.cmd "autocmd ColorScheme * highlight TabLineFill ctermfg=NONE ctermbg=NONE g
 
 vim.cmd("autocmd ColorScheme * highlight IndentScope guifg=" .. colors.nord8 .. " guibg=NONE")
 
+vim.cmd("autocmd ColorScheme * highlight YankFlash guifg=" .. colors.nord1 .. " guibg=" .. colors.nord8)
+vim.cmd "autocmd ColorScheme * highlight link NvimGitlinkerHighlightTextObject YankFlash"
+
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking (copying) text",
     group = vim.api.nvim_create_augroup("frolik-highlight-yank", { clear = true }),

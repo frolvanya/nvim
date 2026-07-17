@@ -119,4 +119,28 @@ return {
             },
         },
     },
+    {
+        "linrongbin16/gitlinker.nvim",
+        opts = {
+            highlight_duration = 100,
+        },
+        keys = {
+            {
+                "<leader>gy",
+                function()
+                    require("gitlinker").link()
+                end,
+                mode = { "n", "v" },
+                desc = "Yank permalink (commit)",
+            },
+            {
+                "<leader>gY",
+                function()
+                    require("gitlinker").link({ router_type = "current_branch" })
+                end,
+                mode = { "n", "v" },
+                desc = "Yank link (branch)",
+            },
+        },
+    },
 }
