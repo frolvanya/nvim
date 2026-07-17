@@ -313,6 +313,26 @@ return {
                     }
                 end,
             })
+
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = "tolk",
+                callback = function(ev)
+                    local path = vim.api.nvim_buf_get_name(ev.buf)
+                    local nm = path:find "/node_modules/"
+                    local root = nm and path:sub(1, nm - 1) or vim.fs.root(ev.buf, { "package.json", ".git" })
+                    local stdlib = root and (root .. "/node_modules/@ton/tolk-js/dist/tolk-stdlib")
+                    local settings
+                    if stdlib and vim.fn.isdirectory(stdlib) == 1 then
+                        settings = { tolk = { stdlib = { path = stdlib } } }
+                    end
+                    vim.lsp.start {
+                        name = "ton_ls",
+                        cmd = { "node", vim.fn.expand "~/.local/share/ton-language-server/server.js", "--stdio" },
+                        root_dir = root,
+                        settings = settings,
+                    }
+                end,
+            })
         end,
     },
 }

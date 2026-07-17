@@ -382,8 +382,28 @@ return {
         config = function(_, opts)
             local ts = require "nvim-treesitter"
 
+            vim.filetype.add { extension = { tolk = "tolk" } }
+
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "TSUpdate",
+                callback = function()
+                    require("nvim-treesitter.parsers").tolk = {
+                        install_info = {
+                            url = "https://github.com/ton-blockchain/tree-sitter-tolk",
+                        },
+                    }
+                end,
+            })
+
             ts.setup { install_dir = opts.install_dir }
-            ts.install { "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "markdown_inline", "query", "vim", "vimdoc", "rust" }
+            ts.install { "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "markdown_inline", "query", "vim", "vimdoc", "rust", "tolk" }
+
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = "tolk",
+                callback = function()
+                    pcall(vim.treesitter.start)
+                end,
+            })
         end,
     },
 }
